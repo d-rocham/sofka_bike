@@ -1,4 +1,4 @@
-package menus.DataStructures;
+package datastructures;
 
 public class User {
     String userType;

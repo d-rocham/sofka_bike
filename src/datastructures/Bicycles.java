@@ -1,4 +1,4 @@
-package menus.DataStructures;
+package datastructures;
 
 import java.util.List;
 
