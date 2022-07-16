@@ -2,13 +2,13 @@ package menus;
 
 import java.util.List;
 
-public class MainMenu extends PickOptionMenu{
+public class MainMenu extends PickOptionMenu {
     public MainMenu(List<String> menuOptions, String menuTitle) {
         super(menuOptions, menuTitle);
     }
 
     public void activateMenu() {
-        int userAction = interactWithUser();
+        int userAction = userSelectsKey();
 
         if (userAction == 1) {
             System.out.println("Register user");
@@ -26,7 +26,6 @@ public class MainMenu extends PickOptionMenu{
             System.out.println("Ticket history");
         }
 
-        return;
     }
 
 }

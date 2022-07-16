@@ -33,7 +33,7 @@ public abstract class PickOptionMenu {
         return menuOptions.containsKey(target);
     }
 
-    protected int interactWithUser() {
+    private int processUserChoice() {
         Scanner mainMenuScanner = new Scanner(System.in);
 
         int userChoice = 0;
@@ -46,5 +46,14 @@ public abstract class PickOptionMenu {
         return userChoice;
     }
 
+    protected int userSelectsKey() {
+        return processUserChoice();
+    }
+
+    protected String userSelectsValue() {
+        int userChoice = processUserChoice();
+
+        return menuOptions.get(userChoice);
+    }
     public abstract void activateMenu();
 }

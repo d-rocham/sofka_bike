@@ -2,7 +2,7 @@ package menus;
 
 import java.util.List;
 
-public class TicketHistory extends PickOptionMenu{
+public class TicketHistory extends PickOptionMenu {
     public TicketHistory(List<String> menuOptions, String menuTitle) {
         super(menuOptions, menuTitle);
     }
