@@ -11,7 +11,7 @@ public class MainMenu extends PickOptionMenu{
         int userAction = interactWithUser();
 
         if (userAction == 1) {
-            System.out.println("Registra tu bici");
+            System.out.println("Register user");
         }
 
         if (userAction == 2) {
