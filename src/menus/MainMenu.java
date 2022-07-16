@@ -7,7 +7,8 @@ public class MainMenu extends PickOptionMenu{
         super(menuOptions, menuTitle);
     }
 
-    protected int menuAction() {
+    public int menuAction() {
+        renderMenu();
         return 0;
     }
 }
