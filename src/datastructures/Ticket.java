@@ -9,6 +9,8 @@ public class Ticket {
     Time ticketTime;
     boolean gotHelmet;
     String ticketUserID;
+
+    // TODO: create debt Class
     int ticketDebt;
 
     protected Ticket(String ticketCode, Date ticketDate, Time ticketTime, boolean gotHelmet, String ticketUserID, int ticketDebt) {

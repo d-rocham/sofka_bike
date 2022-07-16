@@ -12,7 +12,7 @@ public class UserRegistration{
     PickOptionMenu selectUserType = new PickOptionMenu(Arrays.asList("Student", "Professor"), "Choose user type:");
 
 
-    public void menuAction(Users sessionUsers) {
+    public void registerNewUser(Users sessionUsers) {
         String selectedUserType = selectUserType.userSelectsValue();
 
         String newUserID = requestID.gatherStepData();

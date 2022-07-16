@@ -1,6 +1,8 @@
 package datastructures;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
 
 public class User {
@@ -10,6 +12,8 @@ public class User {
     int userAge;
 
     private HashMap<String, String> userProperties = new HashMap<>();
+
+    private List<Tickets> userTickets = new ArrayList<>();
 
     protected User(String userType, String userID, String userName, int userAge) {
         this.userType = userType;

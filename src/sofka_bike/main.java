@@ -44,7 +44,7 @@ public class main {
         int requestedSubmenu = mainMenu.userSelectsKey();
 
         if (requestedSubmenu == 1) {
-            userRegistrationMenu.menuAction(sessionUsers);
+            userRegistrationMenu.registerNewUser(sessionUsers);
         }
 
         if(requestedSubmenu == 5) {
