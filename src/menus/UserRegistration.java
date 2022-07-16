@@ -1,16 +1,29 @@
 package menus;
 
-import java.util.List;
+import datastructures.Users;
 
-public class UserRegistration extends StepsMenu{
+import java.util.Arrays;
 
+public class UserRegistration {
+    MenuStep requestID = new MenuStep("Insert your ID");
+    MenuStep requestName = new MenuStep("What's your name?");
+    MenuStep requestAge = new MenuStep("What's your age?");
 
-    public UserRegistration(List<String> menuSteps) {
-        super(menuSteps);
-    }
+    PickOptionMenu selectUserType = new PickOptionMenu(Arrays.asList("Student", "Professor"), "Choose user type:");
 
-    @Override
-    protected void menuAction() {
+    public void menuAction(Users sessionUsers) {
+        String selectedUserType = selectUserType.userSelectsValue();
 
+        String newUserID = requestID.gatherStepData();
+
+        String newUserName = requestName.gatherStepData();
+
+        int newUserAge = 0;
+
+        while (newUserAge < 18) {
+            newUserAge = Integer.parseInt(requestAge.gatherStepData());
+        }
+
+        sessionUsers.addUser(selectedUserType, newUserID, newUserName, newUserAge);
     }
 }

@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-public abstract class PickOptionMenu {
+public class PickOptionMenu {
 
     protected HashMap<Integer, String> menuOptions = new HashMap<>();
     protected String menuTitle;
 
-    protected PickOptionMenu(List<String> menuOptions, String menuTitle) {
+    public PickOptionMenu(List<String> menuOptions, String menuTitle) {
         setMenuOptions(menuOptions);
         this.menuTitle = menuTitle;
     }
@@ -46,14 +46,13 @@ public abstract class PickOptionMenu {
         return userChoice;
     }
 
-    protected int userSelectsKey() {
+    public int userSelectsKey() {
         return processUserChoice();
     }
 
-    protected String userSelectsValue() {
+     public String userSelectsValue() {
         int userChoice = processUserChoice();
 
         return menuOptions.get(userChoice);
     }
-    public abstract void activateMenu();
 }

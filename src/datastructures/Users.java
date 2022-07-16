@@ -1,15 +1,13 @@
 package datastructures;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Users {
     List<User> users;
 
-    public void addUser(){
-        // TODO: implement
-        return;
+    public void addUser(String userType, String userID, String userName, int userAge){
+        User newUser = new User(userType, userID, userName, userAge);
+        users.add(newUser);
     }
 
     public int getUsersLength(){

@@ -1,5 +1,7 @@
 package menus;
 
+import datastructures.Users;
+
 import java.util.List;
 
 public class MainMenu extends PickOptionMenu {
@@ -7,11 +9,11 @@ public class MainMenu extends PickOptionMenu {
         super(menuOptions, menuTitle);
     }
 
-    public void activateMenu() {
+    public void activateMenu(Users sessionUsers) {
         int userAction = userSelectsKey();
 
         if (userAction == 1) {
-            System.out.println("Register user");
+            System.out.println("lol");
         }
 
         if (userAction == 2) {

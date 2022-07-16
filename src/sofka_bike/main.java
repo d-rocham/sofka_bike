@@ -3,14 +3,14 @@ package sofka_bike;
 import datastructures.Bicycles;
 import datastructures.Tickets;
 import datastructures.Users;
-import menus.MainMenu;
+import menus.PickOptionMenu;
+import menus.UserRegistration;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 
 
 public class main {
@@ -34,12 +34,18 @@ public class main {
 
         Tickets sessionTickets = new Tickets();
 
-        List<String> mainMenuOptions = Arrays.asList("Register user", "Borrow Bicycle", "Return Bicycle", "Tickets History", "Exit");
+        /* INITIALIZE MENUS */
 
-        MainMenu sessionMainMenu = new MainMenu(mainMenuOptions, "Main Menu");
+        PickOptionMenu mainMenu = new PickOptionMenu(Arrays.asList("Register user", "Borrow Bicycle", "Return Bicycle", "Tickets History", "Exit"), "SOFKA BIKE");
 
-        sessionMainMenu.activateMenu();
+        UserRegistration userRegistrationMenu = new UserRegistration();
 
+        /* RENDER */
+        int requestedSubmenu = mainMenu.userSelectsKey();
+
+        if (requestedSubmenu == 1) {
+            userRegistrationMenu.menuAction(sessionUsers);
+        }
     }
 
 }
