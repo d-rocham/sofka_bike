@@ -7,10 +7,6 @@ import java.util.stream.Collectors;
 public class Users {
     List<User> users;
 
-    public Users(List<User> users) {
-        this.users = new ArrayList<>();
-    }
-
     public void addUser(){
         // TODO: implement
         return;

@@ -12,10 +12,10 @@ public class Bicycle {
         this.bicycleStatus = Boolean.parseBoolean(bicycleStatus);
     }
 
-    protected Bicycle(String bicycleCode, String bicycleColor, boolean bicycleStatus, String bicycleType) {
+    protected Bicycle(String bicycleCode, String bicycleColor, String bicycleStatus, String bicycleType) {
         this.bicycleCode = bicycleCode;
         this.bicycleColor = bicycleColor;
-        this.bicycleStatus = bicycleStatus;
+        setBicycleStatus(bicycleStatus);
         this.bicycleType = bicycleType;
     }
 }
