@@ -8,7 +8,8 @@ public class TicketHistory extends PickOptionMenu{
     }
 
     @Override
-    protected int menuAction() {
-        return 0;
+    public void activateMenu() {
+        System.out.println("I'm complying, stop nagging me LINTER!");
+
     }
 }

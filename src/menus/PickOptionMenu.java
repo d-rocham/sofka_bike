@@ -2,6 +2,7 @@ package menus;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 public abstract class PickOptionMenu {
 
@@ -15,7 +16,8 @@ public abstract class PickOptionMenu {
 
     private void setMenuOptions(List<String> menuOptionsList) {
         for (int idx = 0; idx < menuOptionsList.size(); idx++) {
-            this.menuOptions.put(idx + 1, String.format("%d. %s", idx, menuOptionsList.get(idx)));
+            int key = idx + 1;
+            this.menuOptions.put(key, String.format("%d. %s", key, menuOptionsList.get(idx)));
         }
     }
 
@@ -27,5 +29,22 @@ public abstract class PickOptionMenu {
         }
     }
 
-    protected abstract int menuAction();
+    protected boolean checkMenuOptions(int target){
+        return menuOptions.containsKey(target);
+    }
+
+    protected int interactWithUser() {
+        Scanner mainMenuScanner = new Scanner(System.in);
+
+        int userChoice = 0;
+
+        while (!checkMenuOptions(userChoice)) {
+            renderMenu();
+            userChoice = Integer.parseInt(mainMenuScanner.nextLine());
+        }
+
+        return userChoice;
+    }
+
+    public abstract void activateMenu();
 }

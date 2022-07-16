@@ -7,8 +7,26 @@ public class MainMenu extends PickOptionMenu{
         super(menuOptions, menuTitle);
     }
 
-    public int menuAction() {
-        renderMenu();
-        return 0;
+    public void activateMenu() {
+        int userAction = interactWithUser();
+
+        if (userAction == 1) {
+            System.out.println("Registra tu bici");
+        }
+
+        if (userAction == 2) {
+            System.out.println("Borrow bicycle");
+        }
+
+        if (userAction == 3 ){
+            System.out.println("Return bicycle");
+        }
+
+        if (userAction == 4) {
+            System.out.println("Ticket history");
+        }
+
+        return;
     }
+
 }

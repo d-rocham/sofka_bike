@@ -38,7 +38,7 @@ public class main {
 
         MainMenu sessionMainMenu = new MainMenu(mainMenuOptions, "Main Menu");
 
-        sessionMainMenu.menuAction();
+        sessionMainMenu.activateMenu();
 
     }
 
