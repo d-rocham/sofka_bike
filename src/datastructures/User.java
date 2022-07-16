@@ -13,7 +13,7 @@ public class User {
 
     private HashMap<String, String> userProperties = new HashMap<>();
 
-    private List<Tickets> userTickets = new ArrayList<>();
+    private Tickets userTickets;
 
     protected User(String userType, String userID, String userName, int userAge) {
         this.userType = userType;
@@ -31,5 +31,9 @@ public class User {
         for (Entry<String, String> entry: userProperties.entrySet()) {
             System.out.format("%s: %s \n", entry.getKey(), entry.getValue());
         }
+    }
+
+    public boolean checkUserHasDebt() {
+        return userTickets.searchForDebt();
     }
 }

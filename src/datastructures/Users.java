@@ -2,6 +2,8 @@ package datastructures;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Users {
     private List<User> users;
@@ -21,9 +23,14 @@ public class Users {
     }
 
     public boolean checkUserExists(String targetUserID) {
-        // TODO: fix the bug below
         List<String> userIDS = users.stream().map(user -> user.userID).toList();
         return userIDS.contains(targetUserID);
+    }
+
+    public User retrieveUser(String targetUserID) {
+        List<User> foundUser = users.stream().filter(user -> user.userID == targetUserID).toList();
+
+        return foundUser.get(0);
     }
 
     public void addUser(String userType, String userID, String userName, int userAge){
