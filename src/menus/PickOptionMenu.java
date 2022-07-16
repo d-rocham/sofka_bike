@@ -2,6 +2,7 @@ package menus;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class PickOptionMenu {
@@ -17,15 +18,15 @@ public class PickOptionMenu {
     private void setMenuOptions(List<String> menuOptionsList) {
         for (int idx = 0; idx < menuOptionsList.size(); idx++) {
             int key = idx + 1;
-            this.menuOptions.put(key, String.format("%d. %s", key, menuOptionsList.get(idx)));
+            this.menuOptions.put(key, menuOptionsList.get(idx));
         }
     }
 
     protected void renderMenu(){
         System.out.println(menuTitle);
-        for (String value : menuOptions.values()
-             ) {
-            System.out.println(value);
+
+        for (Map.Entry<Integer, String> entry: menuOptions.entrySet()) {
+            System.out.format("%s: %s \n", entry.getKey(), entry.getValue());
         }
     }
 

@@ -46,6 +46,11 @@ public class main {
         if (requestedSubmenu == 1) {
             userRegistrationMenu.menuAction(sessionUsers);
         }
+
+        if(requestedSubmenu == 5) {
+            System.out.println("Bye");
+            return;
+        }
     }
 
 }

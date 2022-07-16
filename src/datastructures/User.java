@@ -1,15 +1,31 @@
 package datastructures;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 public class User {
     String userType;
     String userID;
     String userName;
     int userAge;
 
-    protected User(String userType, String userID, String userName, int userAGe) {
+    private HashMap<String, String> userProperties = new HashMap<>();
+
+    protected User(String userType, String userID, String userName, int userAge) {
         this.userType = userType;
         this.userID = userID;
         this.userName = userName;
-        this.userAge = userAGe;
+        this.userAge = userAge;
+
+        userProperties.put("Type", this.userType);
+        userProperties.put("ID", this.userID);
+        userProperties.put("Name", this.userName);
+        userProperties.put("Age", Integer.toString(this.userAge));
+    }
+
+    protected void printUser() {
+        for (Entry<String, String> entry: userProperties.entrySet()) {
+            System.out.format("%s: %s \n", entry.getKey(), entry.getValue());
+        }
     }
 }
