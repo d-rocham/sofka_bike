@@ -9,7 +9,7 @@ public class User {
     String userName;
     int userAge;
 
-        private HashMap<String, String> userProperties = new HashMap<>();
+    private HashMap<String, String> userProperties = new HashMap<>();
 
     private Tickets userTickets;
 
