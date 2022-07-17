@@ -11,7 +11,6 @@ public class UserRegistration{
 
     PickOptionMenu selectUserType = new PickOptionMenu(Arrays.asList("Student", "Professor"), "Choose user type:");
 
-
     public void registerNewUser(Users sessionUsers) {
         String selectedUserType = selectUserType.userSelectsValue();
 

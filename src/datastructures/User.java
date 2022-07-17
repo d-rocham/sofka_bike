@@ -2,6 +2,7 @@ package datastructures;
 
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.Objects;
 
 public class User {
     String userType;
@@ -13,9 +14,9 @@ public class User {
 
     public Tickets userTickets;
 
-    protected User(String userType, String userID, String userName, int userAge) {
+    protected User(String userType, String govID, String userName, int userAge) {
         this.userType = userType;
-        this.userID = userID;
+        this.userID = createUserID(govID);
         this.userName = userName;
         this.userAge = userAge;
         this.userTickets = new Tickets();
@@ -26,13 +27,18 @@ public class User {
         userProperties.put("Age", Integer.toString(this.userAge));
     }
 
+    public boolean checkUserHasDebt() {
+        return userTickets.searchForDebt();
+    }
+
     protected void printUser() {
         for (Entry<String, String> entry: userProperties.entrySet()) {
             System.out.format("%s: %s %n", entry.getKey(), entry.getValue());
         }
     }
 
-    public boolean checkUserHasDebt() {
-        return userTickets.searchForDebt();
+    private String createUserID(String govID) {
+        return String.format("%s-%s", Objects.equals(this.userType, "Professor") ? "P" : "S", govID);
     }
+
 }
