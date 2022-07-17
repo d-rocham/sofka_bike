@@ -88,6 +88,10 @@ public class Ticket {
         setPrintableProperties();
     }
 
+    protected String renderTicketStatus() {
+        return this.ticketStatus ? "Open" : "Closed";
+    }
+
     private void getDateDifference() {
 
         long diffInMilliseconds = Math.abs(ticketCloseDate.getTime() - ticketOpenDate.getTime());
@@ -141,7 +145,7 @@ public class Ticket {
         printableParameters.put("Closing date and hour", formatCloseDateTime());
         printableParameters.put("Helmet", Boolean.toString(this.gotHelmet));
         printableParameters.put("Condition", this.bicycleCondition ? "Good" : "Damaged");
-        printableParameters.put("Status", this.ticketStatus ? "Open" : "Closed");
+        printableParameters.put("Status", renderTicketStatus());
         printableParameters.put("Debt", String.valueOf(this.ticketDebt));
     }
 
