@@ -31,12 +31,14 @@ public class Tickets {
     }
 
     public void updateTicket(String ticketCode, boolean newHelmetStatus, boolean newBicycleStatus) {
-
+        Ticket ticketToUpdate = retrieveTicket(ticketCode);
+        ticketToUpdate.gotHelmet = newHelmetStatus;
+        ticketToUpdate.bicycleCondition = newBicycleStatus;
     }
 
     protected Ticket retrieveTicket(String targetTicketCode){
         List<Ticket> foundTicket = ticketList.stream().filter(ticket -> Objects.equals(ticket.ticketCode, targetTicketCode)).toList();
-        
+
         return foundTicket.get(0);
 
     }
