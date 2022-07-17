@@ -38,7 +38,7 @@ public class main {
 
         /* INITIALIZE MENUS */
 
-        PickOptionMenu mainMenu = new PickOptionMenu(Arrays.asList("Register user", "Borrow Bicycle", "Return Bicycle", "Tickets History", "Exit"), "SOFKA BIKE");
+        PickOptionMenu mainMenu = new PickOptionMenu(Arrays.asList("Register user", "Borrow Bicycle", "Return Bicycle", "Pay Debt","Tickets History", "Exit"), "SOFKA BIKE");
 
         UserRegistration userRegistrationMenu = new UserRegistration();
 
@@ -62,12 +62,10 @@ public class main {
 
             if (requestedSubmenu == 3) {
                 returnBicycleMenu.returnBicycle(sessionTickets);
-
             }
 
         }
         System.out.println("Bye");
-        return;
     }
 
 }

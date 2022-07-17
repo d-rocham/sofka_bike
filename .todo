@@ -19,7 +19,8 @@ TICKET TODO:
 
 
 GENERAL TODO:
-
+    DONE ) Check if program prevents user from borrowing a bicycle if he has debt
+    DONE ) Check if program generates ticket codes automatically
     ) Program doesn't ask for user ID, it generates it automatically based on user type
 
     ) Consider creating a superclass or interface for User and Bicycle, Ticket since they share common functionalities
