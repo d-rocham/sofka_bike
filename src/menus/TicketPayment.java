@@ -31,9 +31,9 @@ public class TicketPayment {
             return;
         }
 
-        foundTicket.payTicket();
+        foundTicket.payTicket(true);
 
         User userToUpdate = sessionUsers.retrieveUser(foundTicket.ticketUserID);
-        userToUpdate.userTickets.retrieveTicket(targetTicket).payTicket();
+        userToUpdate.userTickets.retrieveTicket(targetTicket).payTicket(false);
     }
 }

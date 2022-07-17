@@ -46,12 +46,14 @@ public class Ticket {
         }
     }
 
-    public void payTicket() {
+    public void payTicket(boolean renderTicket) {
         this.ticketDebt = 0;
         this.ticketDebts = new ArrayList<>();
 
         setPrintableProperties();
-        renderTicket();
+        if (renderTicket) {
+            renderTicket();
+        }
     }
 
     protected void setTicketDebts() {
