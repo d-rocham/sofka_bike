@@ -2,6 +2,7 @@ package datastructures;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Tickets {
     List<Ticket> ticketList;
@@ -31,6 +32,12 @@ public class Tickets {
 
     public void updateTicket(String ticketCode, boolean newHelmetStatus, boolean newBicycleStatus) {
 
+    }
+
+    protected Ticket retrieveTicket(String targetTicketCode){
+        List<Ticket> foundTicket = ticketList.stream().filter(ticket -> Objects.equals(ticket.ticketCode, targetTicketCode)).toList();
+        
+        return foundTicket.get(0);
 
     }
     public boolean searchForDebt()  {

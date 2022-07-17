@@ -81,7 +81,6 @@ public class Ticket {
     }
 
 
-
     public void renderTicket() {
         for (Map.Entry<String, String> entry: printableParameters.entrySet()) {
             System.out.format("%s: %s %n", entry.getKey(), entry.getValue());
