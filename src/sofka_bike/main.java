@@ -3,6 +3,7 @@ package sofka_bike;
 import datastructures.Bicycles;
 import datastructures.Tickets;
 import datastructures.Users;
+import menus.BicycleBorrower;
 import menus.PickOptionMenu;
 import menus.UserRegistration;
 
@@ -40,11 +41,17 @@ public class main {
 
         UserRegistration userRegistrationMenu = new UserRegistration();
 
+        BicycleBorrower borrowBicycleMenu = new BicycleBorrower();
+
         /* RENDER */
         int requestedSubmenu = mainMenu.userSelectsKey();
 
         if (requestedSubmenu == 1) {
             userRegistrationMenu.registerNewUser(sessionUsers);
+        }
+
+        if (requestedSubmenu == 2) {
+            borrowBicycleMenu.borrowBicycle(sessionUsers, sessionBicycles);
         }
 
         if(requestedSubmenu == 5) {

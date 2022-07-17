@@ -1,5 +1,6 @@
 package menus;
 
+import datastructures.Bicycle;
 import datastructures.Bicycles;
 import datastructures.User;
 import datastructures.Users;
@@ -24,10 +25,14 @@ public class BicycleBorrower {
             System.out.println("User has debt. Pay the debt prior to requesting another bike");
         }
 
-
         String requestedBicycleType = selectBicycleType.userSelectsValue();
-        // Find requested type
 
+        if (!sessionBicycles.checkTypeAvailability(requestedBicycleType)) {
+            System.out.format("There are no %s bicycles available%n", requestedBicycleType);
+        }
 
+        Bicycle assignedBicycle = sessionBicycles.assignBicycle(requestedBicycleType);
+
+        // TODO: create ticket
     }
 }

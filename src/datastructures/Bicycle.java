@@ -1,5 +1,8 @@
 package datastructures;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Bicycle {
     String bicycleCode;
     String bicycleColor;
@@ -7,8 +10,9 @@ public class Bicycle {
     boolean bicycleStatus;
     String bicycleType;
 
-    public void setBicycleStatus(String bicycleStatus) {
+    private HashMap<String, String> bicycleProperties = new HashMap<>();
 
+    public void setBicycleStatus(String bicycleStatus) {
         this.bicycleStatus = Boolean.parseBoolean(bicycleStatus);
     }
 
@@ -17,5 +21,16 @@ public class Bicycle {
         this.bicycleColor = bicycleColor;
         setBicycleStatus(bicycleStatus);
         this.bicycleType = bicycleType;
+
+        bicycleProperties.put("Code", this.bicycleCode);
+        bicycleProperties.put("Type", this.bicycleType);
+        bicycleProperties.put("Color", this.bicycleColor);
+        bicycleProperties.put("Status", String.valueOf(this.bicycleStatus));
+    }
+
+    protected void printBicycle() {
+        for (Map.Entry<String, String> entry: bicycleProperties.entrySet()) {
+            System.out.format("%s: %s %n", entry.getKey(), entry.getValue());
+        }
     }
 }
