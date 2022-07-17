@@ -33,14 +33,8 @@ public class TicketHistory  {
         if (selectedDisplay == 3) {
             int selectedFilter = selectedTicketStatus.userSelectsKey();
 
-            if (selectedFilter == 1) {
-                // DISPLAY ACTIVE TICKETS, return
-            }
-
-            // DISPLAY INACTIVE TICKETS;
+            sessionTickets.filterAndDisplay(selectedFilter == 1);
         }
 
     }
-
-
 }

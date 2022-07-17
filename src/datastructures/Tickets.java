@@ -59,4 +59,16 @@ public class Tickets {
             ticket.renderTicketSummary();
         }
     }
+
+    public void filterAndDisplay(boolean ticketStatus) {
+        Tickets filteredTickets = new Tickets();
+
+        for (Ticket ticket : ticketList) {
+            if (ticket.ticketStatus == ticketStatus) {
+                filteredTickets.addExistingTicket(ticket);
+            }
+        }
+
+        filteredTickets.displayTickets();
+    }
 }
