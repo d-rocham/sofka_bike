@@ -1,8 +1,6 @@
 package datastructures;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map.Entry;
 
 public class User {
@@ -20,6 +18,7 @@ public class User {
         this.userID = userID;
         this.userName = userName;
         this.userAge = userAge;
+        this.userTickets = new Tickets();
 
         userProperties.put("Type", this.userType);
         userProperties.put("ID", this.userID);

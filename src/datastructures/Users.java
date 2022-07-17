@@ -2,6 +2,7 @@ package datastructures;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -28,7 +29,7 @@ public class Users {
     }
 
     public User retrieveUser(String targetUserID) {
-        List<User> foundUser = users.stream().filter(user -> user.userID == targetUserID).toList();
+        List<User> foundUser = users.stream().filter(user -> Objects.equals(user.userID, targetUserID)).toList();
 
         return foundUser.get(0);
     }

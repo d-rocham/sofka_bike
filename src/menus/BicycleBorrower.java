@@ -23,12 +23,14 @@ public class BicycleBorrower {
 
         if (targetUser.checkUserHasDebt()) {
             System.out.println("User has debt. Pay the debt prior to requesting another bike");
+            return;
         }
 
         String requestedBicycleType = selectBicycleType.userSelectsValue();
 
-        if (!sessionBicycles.checkTypeAvailability(requestedBicycleType)) {
+        if (sessionBicycles.checkIsEmpty(requestedBicycleType)) {
             System.out.format("There are no %s bicycles available%n", requestedBicycleType);
+            return;
         }
 
         Bicycle assignedBicycle = sessionBicycles.assignBicycle(requestedBicycleType);

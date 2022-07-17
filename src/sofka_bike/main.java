@@ -44,20 +44,22 @@ public class main {
         BicycleBorrower borrowBicycleMenu = new BicycleBorrower();
 
         /* RENDER */
-        int requestedSubmenu = mainMenu.userSelectsKey();
+        int requestedSubmenu = 0;
 
-        if (requestedSubmenu == 1) {
-            userRegistrationMenu.registerNewUser(sessionUsers);
-        }
+        while (requestedSubmenu != 5 ) {
+            requestedSubmenu = mainMenu.userSelectsKey();
 
-        if (requestedSubmenu == 2) {
-            borrowBicycleMenu.borrowBicycle(sessionUsers, sessionBicycles);
-        }
+            if (requestedSubmenu == 1) {
+                userRegistrationMenu.registerNewUser(sessionUsers);
+            }
 
-        if(requestedSubmenu == 5) {
-            System.out.println("Bye");
-            return;
+            if (requestedSubmenu == 2) {
+                borrowBicycleMenu.borrowBicycle(sessionUsers, sessionBicycles);
+            }
+
         }
+        System.out.println("Bye");
+        return;
     }
 
 }

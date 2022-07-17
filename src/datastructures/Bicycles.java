@@ -21,19 +21,22 @@ public class Bicycles {
 
     private List<Bicycle> filterByType(String requestedType) {
         return bicyclesList.stream().filter(bicycle -> Objects.equals(bicycle.bicycleType, requestedType)).toList();
+
     }
 
-    public boolean checkTypeAvailability(String requestedType) {
-        return filterByType(requestedType).size() > 0;
+
+    public boolean checkIsEmpty(String requestedType) {
+        return filterByType(requestedType).isEmpty();
     }
 
     public Bicycle assignBicycle(String requestedType) {
-        Bicycle assignedBicycle = bicyclesList.stream().filter(bicycle -> bicycle.bicycleType == requestedType).toList().get(0);
-        assignedBicycle.bicycleStatus = true;
+        List<Bicycle> assignedBicycle = bicyclesList.stream().filter(bicycle -> Objects.equals(bicycle.bicycleType, requestedType)).toList();
 
-        renderBicycleAssignement(assignedBicycle);
+        assignedBicycle.get(0).bicycleStatus = false;
 
-        return assignedBicycle;
+        renderBicycleAssignement(assignedBicycle.get(0));
+
+        return assignedBicycle.get(0);
     }
 
     public void renderBicycleAssignement(Bicycle assignedBicycle) {

@@ -16,7 +16,7 @@ public class Bicycle {
         this.bicycleStatus = Boolean.parseBoolean(bicycleStatus);
     }
 
-    protected Bicycle(String bicycleCode, String bicycleColor, String bicycleStatus, String bicycleType) {
+    protected Bicycle(String bicycleCode, String bicycleType, String bicycleColor, String bicycleStatus) {
         this.bicycleCode = bicycleCode;
         this.bicycleColor = bicycleColor;
         setBicycleStatus(bicycleStatus);
@@ -25,7 +25,6 @@ public class Bicycle {
         bicycleProperties.put("Code", this.bicycleCode);
         bicycleProperties.put("Type", this.bicycleType);
         bicycleProperties.put("Color", this.bicycleColor);
-        bicycleProperties.put("Status", String.valueOf(this.bicycleStatus));
     }
 
     protected void printBicycle() {
