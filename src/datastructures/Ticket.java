@@ -3,8 +3,6 @@ package datastructures;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
 import java.util.*;
 
 public class Ticket {
@@ -12,7 +10,7 @@ public class Ticket {
     String ticketCode;
 
     LocalDateTime ticketOpenDate;
-    Date ticketCloseDate;
+    LocalDateTime ticketCloseDate;
 
     boolean ticketStatus;
     boolean gotHelmet;
