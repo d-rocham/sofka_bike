@@ -36,16 +36,59 @@ public class Ticket {
         this.ticketDebts = new ArrayList<>();
         this.ticketDebt = 0;
 
-        printableParameters.put("Ticket Code", this.ticketCode);
-        printableParameters.put("Bicycle", this.ticketBicycleCode);
-        printableParameters.put("User", this.ticketUserID);
-        printableParameters.put("Open date", formatOpenDate("date"));
-        printableParameters.put("Open hour", formatOpenDate("time"));
-        printableParameters.put("Closing date and hour", formatCloseDateTime());
-        printableParameters.put("Helmet", Boolean.toString(this.gotHelmet));
-        printableParameters.put("Condition", this.bicycleCondition ? "Good" : "Damaged");
-        printableParameters.put("Status", this.ticketStatus ? "Open" : "Closed");
-        printableParameters.put("Debt", String.valueOf(this.ticketDebt));
+        setPrintableProperties();
+
+    }
+
+    public void renderTicket() {
+        for (Map.Entry<String, String> entry: printableParameters.entrySet()) {
+            System.out.format("%s: %s %n", entry.getKey(), entry.getValue());
+        }
+    }
+
+    protected void setTicketDebts() {
+        if (!gotHelmet) {
+            MissingHelmetFee missingHelmet = new MissingHelmetFee();
+            ticketDebts.add(missingHelmet);
+        }
+
+        if (!bicycleCondition) {
+            DamagedBicycle damagedBicycle = new DamagedBicycle();
+            ticketDebts.add(damagedBicycle);
+        }
+
+        getDateDifference();
+
+        if (!ticketDebts.isEmpty()) {
+            ticketDebt = 0;
+            for (Debt debt: ticketDebts) {
+                ticketDebt += debt.totalAmount;
+            }
+        }
+    }
+
+    protected void closeTicket(boolean newHelmetStatus, boolean newBicycleCondition) {
+        gotHelmet = newHelmetStatus;
+        bicycleCondition = newBicycleCondition;
+        ticketCloseDate = new Date();
+        ticketStatus = false;
+
+        setTicketDebts();
+    }
+
+    private void getDateDifference() {
+
+        long diffInMilliseconds = Math.abs(ticketCloseDate.getTime() - ticketOpenDate.getTime());
+
+        long diffInMinutes = TimeUnit.MINUTES.convert(diffInMilliseconds, TimeUnit.MILLISECONDS);
+
+        // For demonstration purposes, the configuration below is set to create a debt after 2
+        // minutes have passed.
+        if (diffInMinutes > 2) {
+            LateFee lateFee = new LateFee(diffInMinutes);
+            ticketDebts.add(lateFee);
+        }
+
     }
 
     private String generateTicketCode(int ticketNumber) {
@@ -75,55 +118,18 @@ public class Ticket {
         return dateFormat.format(ticketCloseDate);
     }
 
-    protected void setTicketDebts() {
-        if (!gotHelmet) {
-            MissingHelmetFee missingHelmet = new MissingHelmetFee();
-            ticketDebts.add(missingHelmet);
-        }
-
-        if (!bicycleCondition) {
-            DamagedBicycle damagedBicycle = new DamagedBicycle();
-            ticketDebts.add(damagedBicycle);
-        }
-
-        getDateDifference();
-
-        if (!ticketDebts.isEmpty()) {
-            ticketDebt = 0;
-            for (Debt debt: ticketDebts) {
-                ticketDebt += debt.totalAmount;
-            }
-        }
+    private void setPrintableProperties() {
+        printableParameters.put("Ticket Code", this.ticketCode);
+        printableParameters.put("Bicycle", this.ticketBicycleCode);
+        printableParameters.put("User", this.ticketUserID);
+        printableParameters.put("Open date", formatOpenDate("date"));
+        printableParameters.put("Open hour", formatOpenDate("time"));
+        printableParameters.put("Closing date and hour", formatCloseDateTime());
+        printableParameters.put("Helmet", Boolean.toString(this.gotHelmet));
+        printableParameters.put("Condition", this.bicycleCondition ? "Good" : "Damaged");
+        printableParameters.put("Status", this.ticketStatus ? "Open" : "Closed");
+        printableParameters.put("Debt", String.valueOf(this.ticketDebt));
     }
 
-    public void renderTicket() {
-        for (Map.Entry<String, String> entry: printableParameters.entrySet()) {
-            System.out.format("%s: %s %n", entry.getKey(), entry.getValue());
-        }
-    }
-
-    private void getDateDifference() {
-
-        long diffInMilliseconds = Math.abs(ticketCloseDate.getTime() - ticketOpenDate.getTime());
-
-        long diffInMinutes = TimeUnit.MINUTES.convert(diffInMilliseconds, TimeUnit.MILLISECONDS);
-
-        // For demonstration purposes, the configuration below is set to create a debt after 2
-        // minutes have passed.
-        if (diffInMinutes > 2) {
-            LateFee lateFee = new LateFee(diffInMinutes);
-            ticketDebts.add(lateFee);
-        }
-
-    }
-
-    protected void closeTicket(boolean newHelmetStatus, boolean newBicycleCondition) {
-        gotHelmet = newHelmetStatus;
-        bicycleCondition = newBicycleCondition;
-        ticketCloseDate = new Date();
-        ticketStatus = false;
-
-        setTicketDebts();
-    }
 
 }
