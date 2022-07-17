@@ -73,7 +73,7 @@ public class Ticket {
         return dateFormat.format(ticketCloseDate);
     }
 
-    private setTicketDebt() {
+    private void setTicketDebt() {
         if (ticketDebts.size() == 1) {
             ticketDebt = 0;
         }
@@ -83,7 +83,8 @@ public class Ticket {
 
 
     public void renderTicket() {
-        // Here is where the date & time should be rendered separately
-        // No need for an different property for each
+        for (Map.Entry<String, String> entry: printableParameters.entrySet()) {
+            System.out.format("%s: %s %n", entry.getKey(), entry.getValue());
+        }
     }
 }

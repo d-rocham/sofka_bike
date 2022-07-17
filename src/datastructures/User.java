@@ -28,7 +28,7 @@ public class User {
 
     protected void printUser() {
         for (Entry<String, String> entry: userProperties.entrySet()) {
-            System.out.format("%s: %s \n", entry.getKey(), entry.getValue());
+            System.out.format("%s: %s %n", entry.getKey(), entry.getValue());
         }
     }
 
