@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class BicycleReturner {
-    MenuStep requestTicket = new MenuStep("What's your ticket nuumber?");
+    MenuStep requestTicket = new MenuStep("What's your ticket number?");
 
     PickOptionMenu selectHelmetOption = new PickOptionMenu(Arrays.asList("Yes", "No"), "Did you bring the bike's helmet?");
 

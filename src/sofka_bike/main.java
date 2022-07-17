@@ -60,7 +60,7 @@ public class main {
                 borrowBicycleMenu.borrowBicycle(sessionUsers, sessionBicycles, sessionTickets);
             }
 
-            if (requestedSubmenu == 2) {
+            if (requestedSubmenu == 3) {
                 returnBicycleMenu.returnBicycle(sessionTickets);
 
             }

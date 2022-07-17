@@ -35,9 +35,9 @@ public class Tickets {
         ticketToUpdate.gotHelmet = newHelmetStatus;
         ticketToUpdate.bicycleCondition = newBicycleStatus;
 
-        // update ticket debt
+        ticketToUpdate.setTicketDebts();
 
-        // render ticket
+        ticketToUpdate.renderTicket();
     }
 
     protected Ticket retrieveTicket(String targetTicketCode){

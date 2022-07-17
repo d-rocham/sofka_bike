@@ -1,6 +1,14 @@
 package datastructures;
 
 public class MissingHelmetFee extends Debt {
-    String debtDescription = "Helmet not returned.";
-    int baseAmount = 5;
+    String debtDescription;
+    int baseAmount;
+
+    int totalAmount;
+
+    public MissingHelmetFee() {
+        this.debtDescription = "Helmet not returned.";
+        this.baseAmount = 5;
+        this.totalAmount = this.baseAmount;
+    }
 }

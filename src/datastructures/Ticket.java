@@ -75,13 +75,6 @@ public class Ticket {
         return dateFormat.format(ticketCloseDate);
     }
 
-    private void calculateTicketDebt() {
-        if (ticketDebts.size() == 1) {
-            ticketDebt = 0;
-        }
-        // TODO: account for other types of debt: iterate through debt array, adding debt.
-    }
-
     protected void setTicketDebts() {
         if (!gotHelmet) {
             MissingHelmetFee missingHelmet = new MissingHelmetFee();
@@ -93,6 +86,14 @@ public class Ticket {
             ticketDebts.add(damagedBicycle);
         }
 
+        getDateDifference();
+
+        if (!ticketDebts.isEmpty()) {
+            ticketDebt = 0;
+            for (Debt debt: ticketDebts) {
+                ticketDebt += debt.totalAmount;
+            }
+        }
     }
 
     public void renderTicket() {
@@ -101,15 +102,14 @@ public class Ticket {
         }
     }
 
-    private int getDateDifference() {
+    private void getDateDifference() {
 
         long timeDifference = ChronoUnit.MINUTES.between((Temporal) ticketOpenDate, (Temporal) new Date());
 
         if (timeDifference > 720) {
-            LateFee lateFee = new LateFee();
-
-            return lateFee.calculateDebt(timeDifference);
+            LateFee lateFee = new LateFee(timeDifference);
+            ticketDebts.add(lateFee);
         }
-        return 0;
+
     }
 }
