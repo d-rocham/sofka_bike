@@ -16,7 +16,7 @@ public class Ticket {
     boolean bicycleCondition;
     String ticketUserID;
     String ticketBicycleCode;
-    List<Date> ticketDebts;
+    List<Debt> ticketDebts;
 
     int ticketDebt;
 
@@ -78,6 +78,20 @@ public class Ticket {
             ticketDebt = 0;
         }
         // TODO: account for other types of debt: iterate through debt array, adding debt.
+    }
+
+    protected void setTicketDebts() {
+        if (!gotHelmet) {
+            MissingHelmetFee missingHelmet = new MissingHelmetFee();
+            ticketDebts.add(missingHelmet);
+        }
+
+        if (!bicycleCondition) {
+            DamagedBicycle damagedBicycle = new DamagedBicycle();
+            ticketDebts.add(damagedBicycle);
+        }
+
+        Date returnDate = new Date();
     }
 
 

@@ -34,6 +34,10 @@ public class Tickets {
         Ticket ticketToUpdate = retrieveTicket(ticketCode);
         ticketToUpdate.gotHelmet = newHelmetStatus;
         ticketToUpdate.bicycleCondition = newBicycleStatus;
+
+        // update ticket debt
+
+        // render ticket
     }
 
     protected Ticket retrieveTicket(String targetTicketCode){
