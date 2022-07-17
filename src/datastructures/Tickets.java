@@ -28,6 +28,11 @@ public class Tickets {
     public void addExistingTicket(Ticket existingTicket) {
         ticketList.add(existingTicket);
     }
+
+    public void updateTicket(String ticketCode, boolean newHelmetStatus, boolean newBicycleStatus) {
+
+
+    }
     public boolean searchForDebt()  {
         for (Ticket ticket :ticketList) {
             if (ticket.ticketDebt > 0){
