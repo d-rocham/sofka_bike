@@ -10,6 +10,7 @@ public class Tickets {
         this.ticketList = new ArrayList<>();
     }
 
+    public addTicket()
     public boolean searchForDebt()  {
         for (Ticket ticket :ticketList) {
             if (ticket.ticketDebt > 0){
@@ -18,6 +19,4 @@ public class Tickets {
         }
         return false;
     }
-
-
 }
