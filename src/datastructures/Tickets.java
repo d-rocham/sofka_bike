@@ -11,7 +11,10 @@ public class Tickets {
     }
 
     public void addTicket(String ticketUserID, String ticketbicycleID) {
-        ticketList.add(new Ticket(ticketList.size(), ticketUserID, ticketbicycleID));
+        Ticket newTicket = new Ticket(ticketList.size(), ticketUserID, ticketbicycleID);
+        ticketList.add(newTicket);
+
+        newTicket.renderTicket();
     }
     public boolean searchForDebt()  {
         for (Ticket ticket :ticketList) {

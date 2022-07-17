@@ -1,9 +1,6 @@
 package menus;
 
-import datastructures.Bicycle;
-import datastructures.Bicycles;
-import datastructures.User;
-import datastructures.Users;
+import datastructures.*;
 
 import java.util.Arrays;
 
@@ -12,7 +9,7 @@ public class BicycleBorrower {
 
     PickOptionMenu selectBicycleType = new PickOptionMenu(Arrays.asList("Mountain", "Road"), "Choose bicycle type:");
 
-    public void borrowBicycle(Users sessionUsers, Bicycles sessionBicycles) {
+    public void borrowBicycle(Users sessionUsers, Bicycles sessionBicycles, Tickets sessionTickets) {
         String requestedUserID = requestID.gatherStepData();
         if (!sessionUsers.checkUserExists(requestedUserID)){
             System.out.println("Requested user doesn't exist");
@@ -35,6 +32,7 @@ public class BicycleBorrower {
 
         Bicycle assignedBicycle = sessionBicycles.assignBicycle(requestedBicycleType);
 
-        // TODO: create ticket
+        sessionTickets.addTicket(requestedUserID, assignedBicycle.bicycleCode);
+
     }
 }

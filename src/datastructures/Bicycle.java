@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Bicycle {
-    String bicycleCode;
+    public String bicycleCode;
     String bicycleColor;
 
     boolean bicycleStatus;

@@ -54,7 +54,7 @@ public class main {
             }
 
             if (requestedSubmenu == 2) {
-                borrowBicycleMenu.borrowBicycle(sessionUsers, sessionBicycles);
+                borrowBicycleMenu.borrowBicycle(sessionUsers, sessionBicycles, sessionTickets);
             }
 
         }
