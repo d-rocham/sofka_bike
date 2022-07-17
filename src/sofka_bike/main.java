@@ -45,10 +45,12 @@ public class main {
 
         TicketPayment payTicketMenu = new TicketPayment();
 
+        TicketHistory ticketHistoryMenu = new TicketHistory();
+
         /* RENDER */
         int requestedSubmenu = 0;
 
-        while (requestedSubmenu != 5 ) {
+        while (requestedSubmenu != 6 ) {
             requestedSubmenu = mainMenu.userSelectsKey();
 
             if (requestedSubmenu == 1) {
@@ -65,6 +67,11 @@ public class main {
 
             if (requestedSubmenu == 4) {
                 payTicketMenu.payTicket(sessionTickets, sessionUsers);
+
+            }
+
+            if (requestedSubmenu == 5) {
+                ticketHistoryMenu.displayTickets(sessionTickets);
 
             }
 
