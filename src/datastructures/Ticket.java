@@ -104,9 +104,7 @@ public class Ticket {
 
         int debtAmount = (int) (diffInMinutes / 2) * 3;
 
-        // For demonstration purposes, the configuration below is set to create a debt after 2
-        // minutes have passed.
-        if (diffInMinutes > 2) {
+        if (diffInMinutes > 30) {
             Debt lateFee = new Debt("Late return", 3, debtAmount);
             ticketDebts.add(lateFee);
         }

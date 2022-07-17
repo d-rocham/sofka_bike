@@ -62,7 +62,7 @@ public class main {
             }
 
             if (requestedSubmenu == 3) {
-                returnBicycleMenu.returnBicycle(sessionTickets);
+                returnBicycleMenu.returnBicycle(sessionTickets, sessionBicycles);
             }
 
             if (requestedSubmenu == 4) {
