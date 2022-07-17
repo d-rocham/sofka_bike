@@ -1,14 +1,10 @@
 package menus;
 
-import java.util.List;
 
-public class TicketHistory extends PickOptionMenu {
-    public TicketHistory(List<String> menuOptions, String menuTitle) {
-        super(menuOptions, menuTitle);
-    }
+import java.util.Arrays;
 
-    public void activateMenu() {
-        System.out.println("I'm complying, stop nagging me LINTER!");
+public class TicketHistory  {
+    PickOptionMenu selectDisplayMethod = new PickOptionMenu(Arrays.asList("Show all", "Search by Code", "Filter by status"), "How do you want to see the tickets?")
 
-    }
+
 }
