@@ -16,6 +16,7 @@ public class TicketHistory  {
 
         if (selectedDisplay == 1) {
             sessionTickets.displayTickets();
+            return;
         }
 
         if (selectedDisplay == 2) {
@@ -24,9 +25,9 @@ public class TicketHistory  {
                 System.out.println("Requested ticket doesn't exist.");
                 return;
             }
-            Ticket foundTicket = sessionTickets.retrieveTicket(targetCode);
-
-
+            System.out.println("Code    |UserID    |Amount ($)    |Status    ");
+            sessionTickets.retrieveTicket(targetCode).renderTicketSummary();
+            return;
         }
 
         if (selectedDisplay == 3) {

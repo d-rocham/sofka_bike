@@ -59,8 +59,4 @@ public class Tickets {
             ticket.renderTicketSummary();
         }
     }
-
-    public Tickets buildFilteredList() {
-
-    }
 }
