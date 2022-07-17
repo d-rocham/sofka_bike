@@ -52,4 +52,11 @@ public class Tickets {
         }
         return false;
     }
+
+    public void displayTickets() {
+        System.out.println("Code    |UserID    |Amount ($)    |Status    ");
+        for (Ticket ticket: ticketList) {
+            System.out.format("%s    %s    %s    %s    %n", ticket.ticketCode, ticket.ticketUserID, ticket.ticketDebt, ticket.ticketStatus);
+        }
+    }
 }

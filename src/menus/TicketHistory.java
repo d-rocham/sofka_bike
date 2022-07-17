@@ -14,7 +14,7 @@ public class TicketHistory  {
         int selectedDisplay = selectDisplayMethod.userSelectsKey();
 
         if (selectedDisplay == 1) {
-            // SHOW ALL TICKETS
+            sessionTickets.displayTickets();
         }
 
         if (selectedDisplay == 2) {
