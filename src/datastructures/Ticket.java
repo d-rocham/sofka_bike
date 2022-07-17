@@ -102,7 +102,7 @@ public class Ticket {
 
         long diffInMinutes = TimeUnit.MINUTES.convert(diffInMilliseconds, TimeUnit.MILLISECONDS);
 
-        int debtAmount = (int) (diffInMinutes / 2) * 3;
+        int debtAmount = (int) (diffInMinutes / 30) * 3;
 
         if (diffInMinutes > 30) {
             Debt lateFee = new Debt("Late return", 3, debtAmount);
