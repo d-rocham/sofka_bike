@@ -8,9 +8,9 @@ import java.util.List;
 public class Ticket {
     int ticketNumber;
     String ticketCode;
-    Date ticketDate;
-    Time ticketOpenHour;
-    Time ticketCloseHour;
+
+    Date ticketOpenDate;
+    Date ticketCloseDate;
     boolean gotHelmet;
     boolean bicycleCondition;
     String ticketUserID;
@@ -19,11 +19,10 @@ public class Ticket {
 
     int ticketDebt;
 
-    public Ticket(int ticketNumber, String ticketCode, Date ticketDate, Time ticketOpenHour, boolean gotHelmet, boolean bicycleCondition, String ticketUserID, String ticketBicycleCode, List<Date> ticketDebts, int ticketDebt) {
+    public Ticket(int ticketNumber,  String ticketUserID, String ticketBicycleCode) {
         this.ticketNumber = ticketNumber;
-        this.ticketCode = generateTicketCode();
-        this.ticketDate = generateTicketDate();
-        this.ticketOpenHour = generateTicketHour();
+        this.ticketCode = generateTicketCode(ticketNumber);
+        this.ticketOpenDate = new Date();
         this.gotHelmet = true;
         this.bicycleCondition = true;
         this.ticketUserID = ticketUserID;
@@ -32,15 +31,21 @@ public class Ticket {
         this.ticketDebt = 0;
     }
 
-    private String generateTicketCode() {
+    private String generateTicketCode(int ticketNumber) {
+        if (ticketNumber < 10) {
+            return String.format("T-%02d", ticketNumber);
+        }
 
+        if (ticketNumber < 100) {
+            return String.format("T-%01d", ticketNumber);
+        }
+
+        return String.format("T-%d", ticketNumber);
     }
 
-    private Date generateTicketDate() {
 
-    }
-
-    private Time generateTicketHour() {
-
+    public void renderTicket() {
+        // Here is where the date & time should be rendered separately
+        // No need for an different property for each
     }
 }
