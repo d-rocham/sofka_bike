@@ -16,11 +16,11 @@ public class Ticket {
     boolean ticketStatus;
     boolean gotHelmet;
     boolean bicycleCondition;
-    String ticketUserID;
+    public String ticketUserID;
     String ticketBicycleCode;
     List<Debt> ticketDebts;
 
-    int ticketDebt;
+    public int ticketDebt;
 
     HashMap<String, String> printableParameters = new HashMap<>();
 
@@ -44,6 +44,14 @@ public class Ticket {
         for (Map.Entry<String, String> entry: printableParameters.entrySet()) {
             System.out.format("%s: %s %n", entry.getKey(), entry.getValue());
         }
+    }
+
+    public void payTicket() {
+        this.ticketDebt = 0;
+        this.ticketDebts = new ArrayList<>();
+
+        setPrintableProperties();
+        renderTicket();
     }
 
     protected void setTicketDebts() {

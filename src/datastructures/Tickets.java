@@ -38,7 +38,7 @@ public class Tickets {
         ticketToUpdate.renderTicket();
     }
 
-    protected Ticket retrieveTicket(String targetTicketCode){
+    public Ticket retrieveTicket(String targetTicketCode){
         List<Ticket> foundTicket = ticketList.stream().filter(ticket -> Objects.equals(ticket.ticketCode, targetTicketCode)).toList();
 
         return foundTicket.get(0);

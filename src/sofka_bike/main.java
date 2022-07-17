@@ -3,10 +3,7 @@ package sofka_bike;
 import datastructures.Bicycles;
 import datastructures.Tickets;
 import datastructures.Users;
-import menus.BicycleBorrower;
-import menus.BicycleReturner;
-import menus.PickOptionMenu;
-import menus.UserRegistration;
+import menus.*;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -46,6 +43,8 @@ public class main {
 
         BicycleReturner returnBicycleMenu = new BicycleReturner();
 
+        TicketPayment payTicketMenu = new TicketPayment();
+
         /* RENDER */
         int requestedSubmenu = 0;
 
@@ -62,6 +61,11 @@ public class main {
 
             if (requestedSubmenu == 3) {
                 returnBicycleMenu.returnBicycle(sessionTickets);
+            }
+
+            if (requestedSubmenu == 4) {
+                payTicketMenu.payTicket(sessionTickets, sessionUsers);
+
             }
 
         }

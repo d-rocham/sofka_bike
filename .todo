@@ -19,6 +19,9 @@ TICKET TODO:
 
 
 GENERAL TODO:
+    ) On bicycle return, bicycle status is not being updated
+        ) Find bicycle from ticket property
+        ) update status
     DONE ) Check if program prevents user from borrowing a bicycle if he has debt
     DONE ) Check if program generates ticket codes automatically
     ) Program doesn't ask for user ID, it generates it automatically based on user type
