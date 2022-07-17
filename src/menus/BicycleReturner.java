@@ -9,7 +9,7 @@ public class BicycleReturner {
 
     PickOptionMenu selectHelmetOption = new PickOptionMenu(Arrays.asList("Yes", "No"), "Did you bring the bike's helmet?");
 
-    PickOptionMenu selectBikeHelmet = new PickOptionMenu(Arrays.asList("Yes", "No"), "Did you take care of the bicycle?");
+    PickOptionMenu selectBikeStatus = new PickOptionMenu(Arrays.asList("Yes", "No"), "Did you take care of the bicycle?");
 
     public void returnBicycle(Tickets sessionTickets) {
         String userTicket = requestTicket.gatherStepData();
@@ -19,7 +19,8 @@ public class BicycleReturner {
             return;
         }
 
-        
+        String helmetStatus = selectHelmetOption.userSelectsValue();
+        String bikeStatus = selectBikeStatus.userSelectsValue();
 
     }
 }
