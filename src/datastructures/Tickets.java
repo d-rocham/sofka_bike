@@ -19,6 +19,12 @@ public class Tickets {
         return newTicket;
     }
 
+    public boolean checkTicketExists(String targetTicketCode) {
+        List<String> ticketCodes = ticketList.stream().map(ticket -> ticket.ticketCode).toList();
+
+        return ticketCodes.contains(targetTicketCode);
+    }
+
     public void addExistingTicket(Ticket existingTicket) {
         ticketList.add(existingTicket);
     }

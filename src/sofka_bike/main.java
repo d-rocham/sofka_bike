@@ -4,6 +4,7 @@ import datastructures.Bicycles;
 import datastructures.Tickets;
 import datastructures.Users;
 import menus.BicycleBorrower;
+import menus.BicycleReturner;
 import menus.PickOptionMenu;
 import menus.UserRegistration;
 
@@ -43,6 +44,8 @@ public class main {
 
         BicycleBorrower borrowBicycleMenu = new BicycleBorrower();
 
+        BicycleReturner returnBicycleMenu = new BicycleReturner();
+
         /* RENDER */
         int requestedSubmenu = 0;
 
@@ -57,7 +60,8 @@ public class main {
                 borrowBicycleMenu.borrowBicycle(sessionUsers, sessionBicycles, sessionTickets);
             }
 
-            ir (requestedSubmenu == 2) {
+            if (requestedSubmenu == 2) {
+                returnBicycleMenu.returnBicycle(sessionTickets);
 
             }
 

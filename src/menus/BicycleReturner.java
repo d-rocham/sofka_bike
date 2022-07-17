@@ -1,5 +1,7 @@
 package menus;
 
+import datastructures.Tickets;
+
 import java.util.Arrays;
 
 public class BicycleReturner {
@@ -9,5 +11,15 @@ public class BicycleReturner {
 
     PickOptionMenu selectBikeHelmet = new PickOptionMenu(Arrays.asList("Yes", "No"), "Did you take care of the bicycle?");
 
-    public void returnBicycle()
+    public void returnBicycle(Tickets sessionTickets) {
+        String userTicket = requestTicket.gatherStepData();
+
+        if (!sessionTickets.checkTicketExists(userTicket)){
+            System.out.println("Submitted ticket does not exist.");
+            return;
+        }
+
+        
+
+    }
 }
