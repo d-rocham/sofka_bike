@@ -1,7 +1,8 @@
 package datastructures;
 
-import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 import java.util.*;
@@ -10,7 +11,7 @@ public class Ticket {
     int ticketNumber;
     String ticketCode;
 
-    Date ticketOpenDate;
+    LocalDateTime ticketOpenDate;
     Date ticketCloseDate;
 
     boolean ticketStatus;
@@ -27,7 +28,7 @@ public class Ticket {
     public Ticket(int ticketNumber,  String ticketUserID, String ticketBicycleCode) {
         this.ticketNumber = ticketNumber;
         this.ticketCode = generateTicketCode(ticketNumber);
-        this.ticketOpenDate = new Date();
+        this.ticketOpenDate = LocalDateTime.now();
         this.ticketStatus = true;
         this.gotHelmet = true;
         this.bicycleCondition = true;
@@ -104,7 +105,9 @@ public class Ticket {
 
     private void getDateDifference() {
 
-        long timeDifference = ChronoUnit.MINUTES.between((Temporal) ticketOpenDate, (Temporal) new Date());
+        Duration timeElapsed = Duration.between(LocalDateTime.now(), ticketOpenDate);
+
+        long timeDifference = Math.abs(timeElapsed.toMinutes());
 
         if (timeDifference > 720) {
             LateFee lateFee = new LateFee(timeDifference);
