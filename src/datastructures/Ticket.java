@@ -4,13 +4,14 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class Ticket {
     int ticketNumber;
     String ticketCode;
 
-    LocalDateTime ticketOpenDate;
-    LocalDateTime ticketCloseDate;
+    Date ticketOpenDate;
+    Date ticketCloseDate;
 
     boolean ticketStatus;
     boolean gotHelmet;
@@ -26,7 +27,7 @@ public class Ticket {
     public Ticket(int ticketNumber,  String ticketUserID, String ticketBicycleCode) {
         this.ticketNumber = ticketNumber;
         this.ticketCode = generateTicketCode(ticketNumber);
-        this.ticketOpenDate = LocalDateTime.now();
+        this.ticketOpenDate = new Date();
         this.ticketStatus = true;
         this.gotHelmet = true;
         this.bicycleCondition = true;
@@ -103,14 +104,26 @@ public class Ticket {
 
     private void getDateDifference() {
 
-        Duration timeElapsed = Duration.between(LocalDateTime.now(), ticketOpenDate);
+        long diffInMilliseconds = Math.abs(ticketCloseDate.getTime() - ticketOpenDate.getTime());
 
-        long timeDifference = Math.abs(timeElapsed.toMinutes());
+        long diffInMinutes = TimeUnit.MINUTES.convert(diffInMilliseconds, TimeUnit.MILLISECONDS);
 
-        if (timeDifference > 720) {
-            LateFee lateFee = new LateFee(timeDifference);
+        // For demonstration purposes, the configuration below is set to create a debt after 2
+        // minutes have passed.
+        if (diffInMinutes > 2) {
+            LateFee lateFee = new LateFee(diffInMinutes);
             ticketDebts.add(lateFee);
         }
 
     }
+
+    protected void closeTicket(boolean newHelmetStatus, boolean newBicycleCondition) {
+        gotHelmet = newHelmetStatus;
+        bicycleCondition = newBicycleCondition;
+        ticketCloseDate = new Date();
+        ticketStatus = false;
+
+        setTicketDebts();
+    }
+
 }

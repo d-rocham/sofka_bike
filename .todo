@@ -1,0 +1,32 @@
+TICKET TODO:
+    DONE ) Create new properties
+    DONE ) Create Debt class
+        DONE ) What properties should it have?
+        DONE ) What methods should it have?
+        ) How to calculate its amount?
+
+    DONE ) Create Ticket constructor
+        DONE ) Account for dinamically computed properties:
+            ticketDate(DONE), ticketCode (DONE), Amount
+
+            Done) Create each function for each dinamically computed properties;
+
+    ) Create renderTicket method in class Ticket
+    DONE ) Create addTicket method in class Tickets
+        ) Call printTicket method at the end
+
+    ) Create editTicket method in class Tickets
+
+
+GENERAL TODO:
+
+    ) Program doesn't ask for user ID, it generates it automatically based on user type
+
+    ) Consider creating a superclass or interface for User and Bicycle, Ticket since they share common functionalities
+        ) Like printing entries from a hashmap
+
+
+    ) Change HashMaps that are for printing to LinkedHashMaps to preserve their order
+
+    ) MenuStep for asking TicketCode & UserID can be turned into a method inside an interface implemented by bicylereturner and borrowerbicyle
+

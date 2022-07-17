@@ -11,7 +11,9 @@ public class LateFee extends Debt{
         this.totalAmount = calculateDebt(timeLate);
     }
 
+    // For demonstration purposes, the function below charges the baseAmount per 2
+    // minutes of delay.
     private int calculateDebt(long timeLate) {
-        return (int) ((timeLate / 30) * baseAmount);
+        return (int) ((timeLate / 2) * baseAmount);
     }
 }

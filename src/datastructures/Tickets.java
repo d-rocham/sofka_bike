@@ -32,10 +32,8 @@ public class Tickets {
 
     public void updateTicket(String ticketCode, boolean newHelmetStatus, boolean newBicycleStatus) {
         Ticket ticketToUpdate = retrieveTicket(ticketCode);
-        ticketToUpdate.gotHelmet = newHelmetStatus;
-        ticketToUpdate.bicycleCondition = newBicycleStatus;
 
-        ticketToUpdate.setTicketDebts();
+        ticketToUpdate.closeTicket(newHelmetStatus, newBicycleStatus);
 
         ticketToUpdate.renderTicket();
     }
