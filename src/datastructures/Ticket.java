@@ -66,7 +66,7 @@ public class Ticket {
 
     private String formatCloseDateTime() {
         if (ticketCloseDate == null) {
-            return "No ha cerrado aún";
+            return "Not closed yet.";
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy 'at' kk:mm");
 
