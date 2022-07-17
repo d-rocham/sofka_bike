@@ -48,32 +48,34 @@ public class Ticket {
 
     protected void setTicketDebts() {
         if (!gotHelmet) {
-            MissingHelmetFee missingHelmet = new MissingHelmetFee();
-            ticketDebts.add(missingHelmet);
+            Debt missingHelmet = new Debt("Missing helmet", 5, 5);
+            this.ticketDebts.add(missingHelmet);
         }
 
         if (!bicycleCondition) {
-            DamagedBicycle damagedBicycle = new DamagedBicycle();
-            ticketDebts.add(damagedBicycle);
+            Debt damagedBicycle = new Debt("Damaged bicycle", 5, 5);
+            this.ticketDebts.add(damagedBicycle);
         }
 
         getDateDifference();
 
         if (!ticketDebts.isEmpty()) {
-            ticketDebt = 0;
+            this.ticketDebt = 0;
             for (Debt debt: ticketDebts) {
-                ticketDebt += debt.totalAmount;
+                System.out.println(debt.debtDescription);
+                this.ticketDebt += debt.totalAmount;
             }
         }
     }
 
     protected void closeTicket(boolean newHelmetStatus, boolean newBicycleCondition) {
-        gotHelmet = newHelmetStatus;
-        bicycleCondition = newBicycleCondition;
-        ticketCloseDate = new Date();
-        ticketStatus = false;
+        this.gotHelmet = newHelmetStatus;
+        this.bicycleCondition = newBicycleCondition;
+        this.ticketCloseDate = new Date();
+        this.ticketStatus = false;
 
         setTicketDebts();
+        setPrintableProperties();
     }
 
     private void getDateDifference() {
@@ -82,10 +84,12 @@ public class Ticket {
 
         long diffInMinutes = TimeUnit.MINUTES.convert(diffInMilliseconds, TimeUnit.MILLISECONDS);
 
+        int debtAmount = (int) (diffInMinutes / 2) * 3;
+
         // For demonstration purposes, the configuration below is set to create a debt after 2
         // minutes have passed.
         if (diffInMinutes > 2) {
-            LateFee lateFee = new LateFee(diffInMinutes);
+            Debt lateFee = new Debt("Late return", 3, debtAmount);
             ticketDebts.add(lateFee);
         }
 

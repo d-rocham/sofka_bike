@@ -23,7 +23,7 @@ public class BicycleReturner {
         String helmetStatus = selectHelmetOption.userSelectsValue();
         String bikeStatus = selectBikeStatus.userSelectsValue();
 
-        sessionTickets.updateTicket(userTicketCode, Objects.equals(helmetStatus, "yes"), Objects.equals(bikeStatus, "yes"));
+        sessionTickets.updateTicket(userTicketCode, Objects.equals(helmetStatus, "Yes"), Objects.equals(bikeStatus, "Yes"));
 
     }
 }
