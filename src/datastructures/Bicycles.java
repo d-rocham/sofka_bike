@@ -44,4 +44,13 @@ public class Bicycles {
         assignedBicycle.printBicycle();
     }
 
+    public void toggleBicycleStatus(String bicycleCode) {
+        List<Bicycle> foundBike = bicyclesList.stream().filter(bicycle -> Objects.equals(bicycle.bicycleCode, bicycleCode)).toList();
+
+        Bicycle targetBicycle = foundBike.get(0);
+
+        targetBicycle.bicycleStatus = !targetBicycle.bicycleStatus;
+    }
+
+
 }

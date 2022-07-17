@@ -1,5 +1,6 @@
 package menus;
 
+import datastructures.Bicycles;
 import datastructures.Tickets;
 
 import java.util.Arrays;
@@ -12,7 +13,7 @@ public class BicycleReturner {
 
     PickOptionMenu selectBikeStatus = new PickOptionMenu(Arrays.asList("Yes", "No"), "Did you take care of the bicycle?");
 
-    public void returnBicycle(Tickets sessionTickets) {
+    public void returnBicycle(Tickets sessionTickets, Bicycles sessionBicycles) {
         String userTicketCode = requestTicket.gatherStepData();
 
         if (!sessionTickets.checkTicketExists(userTicketCode)){
@@ -22,6 +23,10 @@ public class BicycleReturner {
 
         String helmetStatus = selectHelmetOption.userSelectsValue();
         String bikeStatus = selectBikeStatus.userSelectsValue();
+
+        String bicycleCode = sessionTickets.retrieveBicycleCode(userTicketCode);
+
+        sessionBicycles.toggleBicycleStatus(bicycleCode);
 
         sessionTickets.updateTicket(userTicketCode, Objects.equals(helmetStatus, "Yes"), Objects.equals(bikeStatus, "Yes"));
 

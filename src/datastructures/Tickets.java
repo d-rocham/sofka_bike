@@ -71,4 +71,9 @@ public class Tickets {
 
         filteredTickets.displayTickets();
     }
+
+    public String retrieveBicycleCode(String ticketCode) {
+        Ticket targetTicket = retrieveTicket(ticketCode);
+        return targetTicket.ticketBicycleCode;
+    }
 }
