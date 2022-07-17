@@ -11,7 +11,7 @@ public class User {
 
     private HashMap<String, String> userProperties = new HashMap<>();
 
-    private Tickets userTickets;
+    public Tickets userTickets;
 
     protected User(String userType, String userID, String userName, int userAge) {
         this.userType = userType;

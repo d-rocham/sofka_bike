@@ -32,7 +32,9 @@ public class BicycleBorrower {
 
         Bicycle assignedBicycle = sessionBicycles.assignBicycle(requestedBicycleType);
 
-        sessionTickets.addTicket(requestedUserID, assignedBicycle.bicycleCode);
+        Ticket newTicket = sessionTickets.addTicket(requestedUserID, assignedBicycle.bicycleCode);
+
+        targetUser.userTickets.addExistingTicket(newTicket);
 
     }
 }
