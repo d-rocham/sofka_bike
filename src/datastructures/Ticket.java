@@ -2,6 +2,8 @@ package datastructures;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
 import java.util.*;
 
 public class Ticket {
@@ -73,7 +75,7 @@ public class Ticket {
         return dateFormat.format(ticketCloseDate);
     }
 
-    private void setTicketDebt() {
+    private void calculateTicketDebt() {
         if (ticketDebts.size() == 1) {
             ticketDebt = 0;
         }
@@ -91,13 +93,23 @@ public class Ticket {
             ticketDebts.add(damagedBicycle);
         }
 
-        Date returnDate = new Date();
     }
-
 
     public void renderTicket() {
         for (Map.Entry<String, String> entry: printableParameters.entrySet()) {
             System.out.format("%s: %s %n", entry.getKey(), entry.getValue());
         }
+    }
+
+    private int getDateDifference() {
+
+        long timeDifference = ChronoUnit.MINUTES.between((Temporal) ticketOpenDate, (Temporal) new Date());
+
+        if (timeDifference > 720) {
+            LateFee lateFee = new LateFee();
+
+            return lateFee.calculateDebt(timeDifference);
+        }
+        return 0;
     }
 }
