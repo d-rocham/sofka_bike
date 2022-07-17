@@ -1,6 +1,7 @@
 package menus;
 
 
+import datastructures.Ticket;
 import datastructures.Tickets;
 
 import java.util.Arrays;
@@ -19,7 +20,13 @@ public class TicketHistory  {
 
         if (selectedDisplay == 2) {
             String targetCode = requestedTicketCode.gatherStepData();
-            // SEARCH FOR REQUESTED TICKET.
+            if (!sessionTickets.checkTicketExists(targetCode)) {
+                System.out.println("Requested ticket doesn't exist.");
+                return;
+            }
+            Ticket foundTicket = sessionTickets.retrieveTicket(targetCode);
+
+
         }
 
         if (selectedDisplay == 3) {

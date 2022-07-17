@@ -56,6 +56,10 @@ public class Ticket {
         }
     }
 
+    public void renderTicketSummary() {
+        System.out.format("%s    %s    %s    %s    %n", this.ticketCode, this.ticketUserID, this.ticketDebt, this.renderTicketStatus());
+    }
+
     protected void setTicketDebts() {
         if (!gotHelmet) {
             Debt missingHelmet = new Debt("Missing helmet", 5, 5);
